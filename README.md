@@ -44,7 +44,6 @@
 ![image](https://user-images.githubusercontent.com/104368430/203922880-3d623e7b-1901-4acb-bb48-1aa673750b1f.png)
 
 - Для каждого Element заполняем поле Input и запускаем проект:
- 
  1) OR - понадобилось 4 эпохи для обучкеия, начиная с 5ой эпохи он корректно выполняет вычисления
 ![image](https://user-images.githubusercontent.com/104368430/203927994-78a46e36-56ec-425f-9bf2-9d95794d0165.png)
 ![image](https://user-images.githubusercontent.com/104368430/203928752-9cffd4c9-a06a-40cb-be69-92fbdafe4246.png)
@@ -66,123 +65,10 @@
 ![image](https://user-images.githubusercontent.com/104368430/203930999-83b4c92e-f6bf-4663-9acb-bbb984532d70.png)
 ![image](https://user-images.githubusercontent.com/104368430/203931021-55ddcb72-8bc8-412c-baa8-b2e7d05478ee.png)
 
- 4) XOP
-
-
-- Далее запускаем Anaconda Prompt для возможности запуска команд через консоль.
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197691208-f0e13ff6-2340-4323-ad7f-0dccee2252f6.png">
-
-- Пишем серию команд для создания и активации нового ML-агента, а также для скачивания необходимых библиотек:
-o	mlagents 0.28.0;
-o	torch 1.7.1;
-<img width="650" alt="image" src="https://user-images.githubusercontent.com/104368430/197692035-0ccad4dc-a8c3-446a-a01d-0aa3342ed380.png">
-<img width="438" alt="image" src="https://user-images.githubusercontent.com/104368430/197692066-c4f8500b-a99a-430e-b36e-50e9d6518712.png">
-<img width="413" alt="image" src="https://user-images.githubusercontent.com/104368430/197692641-7589be21-dfae-42fb-b080-9b7244cce65b.png">
-<img width="948" alt="image" src="https://user-images.githubusercontent.com/104368430/197700344-16a3f763-3eb1-4252-b5da-23abfda61402.png">
-<img width="663" alt="image" src="https://user-images.githubusercontent.com/104368430/197700707-afc9f1b1-5131-466d-9b94-0ec93d4647c8.png">
-
-- Создайть на сцене плоскость, куб и сферу так. Создайть простой C# скрипт-файл и подключите его к сфере:
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197702658-0e7b0a67-2992-4980-97e0-713dedcbc2b1.png">
-
-- В скрипт-файл RollerAgent.cs добавьте код, опубликованный в материалах лабораторных работ – по ссылке.
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197703217-410343f5-1d69-4d2e-b455-4e8a72b730a8.png">
-
-```python
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Unity.MLAgents;
-using Unity.MLAgents.Sensors;
-using Unity.MLAgents.Actuators;
-
-public class RollerAgent : Agent
-{
-    Rigidbody rBody;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rBody = GetComponent<Rigidbody>();
-    }
-
-    public Transform Target;
-    public override void OnEpisodeBegin()
-    {
-        if (this.transform.localPosition.y < 0)
-        {
-            this.rBody.angularVelocity = Vector3.zero;
-            this.rBody.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(0, 0.5f, 0);
-        }
-
-        Target.localPosition = new Vector3(Random.value * 8-4, 0.5f, Random.value * 8-4);
-    }
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        sensor.AddObservation(Target.localPosition);
-        sensor.AddObservation(this.transform.localPosition);
-        sensor.AddObservation(rBody.velocity.x);
-        sensor.AddObservation(rBody.velocity.z);
-    }
-    public float forceMultiplier = 10;
-    public override void OnActionReceived(ActionBuffers actionBuffers)
-    {
-        Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = actionBuffers.ContinuousActions[0];
-        controlSignal.z = actionBuffers.ContinuousActions[1];
-        rBody.AddForce(controlSignal * forceMultiplier);
-
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
-
-        if(distanceToTarget < 1.42f)
-        {
-            SetReward(1.0f);
-            EndEpisode();
-        }
-        else if (this.transform.localPosition.y < 0)
-        {
-            EndEpisode();
-        }
-    }
-}
-```
-
-- Объекту «сфера» добавить компоненты Rigidbody, Decision Requester, Behavior Parameters и настройть их.
-<img width="217" alt="image" src="https://user-images.githubusercontent.com/104368430/198010979-850a2702-3854-490e-b382-fd6863b3ff61.png">
-
-- В корень проекта добавьте файл конфигурации нейронной сети. Запустить работу ml-агента
-<img width="610" alt="image" src="https://user-images.githubusercontent.com/104368430/198011654-eeffe77f-92de-48e4-9b37-fe83f011ace0.png">
-
-```
-behaviors:
-  RollerBall:
-    trainer_type: ppo
-    hyperparameters:
-      batch_size: 10
-      buffer_size: 100
-      learning_rate: 3.0e-4
-      beta: 5.0e-4
-      epsilon: 0.2
-      lambd: 0.99
-      num_epoch: 3
-      learning_rate_schedule: linear
-    network_settings:
-      normalize: false
-      hidden_units: 128
-      num_layers: 2
-    reward_signals:
-      extrinsic:
-        gamma: 0.99
-        strength: 1.0
-    max_steps: 500000
-    time_horizon: 64
-    summary_freq: 10000
-```
-
-- Сделайте 3, 9, 27 копий модели «Плоскость-Сфера-Куб», запустите симуляцию сцены и наблюдайте за результатом обучения модели
-<img width="549" alt="image" src="https://user-images.githubusercontent.com/104368430/198016696-9bed706f-db49-4feb-9cd1-2914714f216b.png">
-
-## Вывод
-Чем больше копий модели «Плоскость-Сфера-Куб», тем более высокого показателя точности мы дочтигаем за меньшее время итераций.
+ 4) XOR - даже после прохождения 1000 эпох перцептрон не смог обучиться, он некорректно выполняет вычисления
+![image](https://user-images.githubusercontent.com/104368430/203931521-0d27d4b5-8b24-4daf-b8ec-7be3a4dcc4d9.png)
+![image](https://user-images.githubusercontent.com/104368430/203932711-687b6444-a01c-4018-9926-dd124245792e.png)
+![image](https://user-images.githubusercontent.com/104368430/203932890-46e3304a-a911-4d01-accd-ecbdcabc9bdc.png)
 
 ## Задание 2
 ### Подробно опишите каждую строку файла конфигурации нейронной сети, доступного в папке с файлами проекта по ссылке. Самостоятельно найдите информацию о компонентах Decision Requester, Behavior Parameters, добавленных на сфере.
