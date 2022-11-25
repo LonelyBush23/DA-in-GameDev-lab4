@@ -109,10 +109,31 @@ double DotProductBias(double[] v1, double[] v2)
  - Создадим модель для работы фунции OR. Черные кубы - единицы, белые - нули. Результат работы = результат логического сложения.
   
 ![image](https://user-images.githubusercontent.com/104368430/203980095-88e12f5d-c187-4358-b992-dbcd3f1c6184.png)
- - Создадим скрипты для изменения цвета при столкновении.
+ - Создадим скрипт для изменения цвета при столкновении.
 
-![image](https://user-images.githubusercontent.com/104368430/203980197-d2423cd8-7cf8-43d0-aa37-ada9689fa236.png)
-![image](https://user-images.githubusercontent.com/104368430/203980241-810db1b6-efa3-43e2-baed-ec96e8c7205a.png)
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChangeColor : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Renderer>().material.color == Color.white && this.gameObject.GetComponent<Renderer>().material.color == Color.white)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.black;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.black;
+        }
+    }
+}
+
+```
 
  - При запуске программы видим, что все работает корректно (цвета кубов правильно меняются в зависимости от выполнения логического сложения)
   
