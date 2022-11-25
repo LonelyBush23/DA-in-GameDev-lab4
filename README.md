@@ -74,31 +74,33 @@
 ### Построить графики зависимости количества эпох от ошибки обучения. Указать от чего зависит необходимое количество эпох обучения.
 
 ![image](https://user-images.githubusercontent.com/104368430/203941457-e88be278-4419-44c9-9bea-72a0e08299a2.png)
-
+необходимое количество эпох обучения зависит от bias (смещение) и weights (вес) =>
 ```
-behaviors:
-  RollerBall:
-    trainer_type: ppo
-    hyperparameters:
-      batch_size: 10
-      buffer_size: 100
-      learning_rate: 3.0e-4
-      beta: 5.0e-4
-      epsilon: 0.2
-      lambd: 0.99
-      num_epoch: 3
-      learning_rate_schedule: linear
-    network_settings:
-      normalize: false
-      hidden_units: 128
-      num_layers: 2
-    reward_signals:
-      extrinsic:
-        gamma: 0.99
-        strength: 1.0
-    max_steps: 500000
-    time_horizon: 64
-    summary_freq: 10000
+double DotProductBias(double[] v1, double[] v2) 
+	{
+		if (v1 == null || v2 == null)
+			return -1;
+	 
+		if (v1.Length != v2.Length)
+			return -1;
+	 
+		double d = 0;
+		for (int x = 0; x < v1.Length; x++)
+		{
+			d += v1[x] * v2[x];
+		}
+
+		d += bias;
+	 
+		return d;
+	}
+
+	double CalcOutput(int i)
+	{
+		double dp = DotProductBias(weights,ts[i].input);
+		if(dp > 0) return(1);
+		return (0);
+	}
 ```
 
 ## Задание 3
