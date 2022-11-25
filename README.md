@@ -38,15 +38,13 @@
 Ознакомиться с работой перцептрона.
 
 ## Задание 1
-### В проекте Unity реализовать перцептрон, который умеет производить вычисления:.
+### В проекте Unity реализовать перцептрон, который умеет производить вычисления:
 Ход работы:
 - Создайть новый пустой 3D проект на Unity. Добавить EmptyObgect и скрипт Perceptron
 ![image](https://user-images.githubusercontent.com/104368430/203922880-3d623e7b-1901-4acb-bb48-1aa673750b1f.png)
 
-- Скачайть папку с ML агентом. В созданный проект добавьть ML Agent, выбрав Window - Package Manager - Add Package from disk. Последовательно добавьть .json – файлы:
-o	ml-agents-release_19 / com,unity.ml-agents / package.json
-o	ml-agents-release_19 / com,unity.ml-agents.extensions / package.json
-![image](https://user-images.githubusercontent.com/104368430/197690845-467bf411-5f2f-4eee-8ea1-eb944a5b8bbb.png)
+- Для каждого Element заполняем поле Input
+![image](https://user-images.githubusercontent.com/104368430/203923669-23aff916-ec6e-4a95-b5b3-0db54307bfce.png)
 
 - Далее запускаем Anaconda Prompt для возможности запуска команд через консоль.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197691208-f0e13ff6-2340-4323-ad7f-0dccee2252f6.png">
