@@ -43,8 +43,21 @@
 - Создайть новый пустой 3D проект на Unity. Добавить EmptyObgect и скрипт Perceptron
 ![image](https://user-images.githubusercontent.com/104368430/203922880-3d623e7b-1901-4acb-bb48-1aa673750b1f.png)
 
-- Для каждого Element заполняем поле Input
-![image](https://user-images.githubusercontent.com/104368430/203923669-23aff916-ec6e-4a95-b5b3-0db54307bfce.png)
+- Для каждого Element заполняем поле Input и запускаем проект:
+ 1) OR
+![image](https://user-images.githubusercontent.com/104368430/203927994-78a46e36-56ec-425f-9bf2-9d95794d0165.png)
+![image](https://user-images.githubusercontent.com/104368430/203928752-9cffd4c9-a06a-40cb-be69-92fbdafe4246.png)
+![image](https://user-images.githubusercontent.com/104368430/203928802-a9f6ba4a-f0d7-4c9d-8e2c-671aa5f257b8.png)
+![image](https://user-images.githubusercontent.com/104368430/203928849-1eb04c07-207d-42a6-b7f8-f27091a1029f.png)
+![image](https://user-images.githubusercontent.com/104368430/203928892-1c3a5eaf-1076-41d5-9fab-ffbe4366a119.png)
+Понадобилось 4 эпохи для обучкеия, те начиная с 5ой эпохи он корректно выполняет вычисления
+
+
+ 2) AND
+
+ 3) NAND
+
+ 4) XOP
 
 - Далее запускаем Anaconda Prompt для возможности запуска команд через консоль.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197691208-f0e13ff6-2340-4323-ad7f-0dccee2252f6.png">
