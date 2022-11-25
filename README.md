@@ -40,8 +40,8 @@
 ## Задание 1
 ### В проекте Unity реализовать перцептрон, который умеет производить вычисления:.
 Ход работы:
-- Создайть новый пустой 3D проект на Unity.
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197689181-cf925718-61af-40b5-8a3f-1bba67100431.png">
+- Создайть новый пустой 3D проект на Unity. Добавить EmptyObgect и скрипт Perceptron
+![image](https://user-images.githubusercontent.com/104368430/203922880-3d623e7b-1901-4acb-bb48-1aa673750b1f.png)
 
 - Скачайть папку с ML агентом. В созданный проект добавьть ML Agent, выбрав Window - Package Manager - Add Package from disk. Последовательно добавьть .json – файлы:
 o	ml-agents-release_19 / com,unity.ml-agents / package.json
