@@ -107,6 +107,7 @@ double DotProductBias(double[] v1, double[] v2)
 ### Построить визуальную модель работы перцептрона на сцене Unity. 
 Ход работы: 
  - Создадим модель для работы фунции OR. Черные кубы - единицы, белые - нули. Результат работы = результат логического сложения.
+ - 
 ![image](https://user-images.githubusercontent.com/104368430/203980095-88e12f5d-c187-4358-b992-dbcd3f1c6184.png)
  - Создадим скрипты для изменения цвета при столкновении.
 
@@ -114,6 +115,7 @@ double DotProductBias(double[] v1, double[] v2)
 ![image](https://user-images.githubusercontent.com/104368430/203980241-810db1b6-efa3-43e2-baed-ec96e8c7205a.png)
 
  - При запуске программы видим, что все работает корректно (цвета кубов правильно меняются в зависимости от выполнения логического сложения)
+  
 ![movie_001](https://user-images.githubusercontent.com/104368430/203983746-7860cde5-f3ca-4371-96ff-e3ca284eb3fa.gif)
 
 ## Выводы
