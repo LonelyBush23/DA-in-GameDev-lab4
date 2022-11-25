@@ -44,20 +44,30 @@
 ![image](https://user-images.githubusercontent.com/104368430/203922880-3d623e7b-1901-4acb-bb48-1aa673750b1f.png)
 
 - Для каждого Element заполняем поле Input и запускаем проект:
- 1) OR
+ 
+ 1) OR - понадобилось 4 эпохи для обучкеия, начиная с 5ой эпохи он корректно выполняет вычисления
 ![image](https://user-images.githubusercontent.com/104368430/203927994-78a46e36-56ec-425f-9bf2-9d95794d0165.png)
 ![image](https://user-images.githubusercontent.com/104368430/203928752-9cffd4c9-a06a-40cb-be69-92fbdafe4246.png)
 ![image](https://user-images.githubusercontent.com/104368430/203928802-a9f6ba4a-f0d7-4c9d-8e2c-671aa5f257b8.png)
 ![image](https://user-images.githubusercontent.com/104368430/203928849-1eb04c07-207d-42a6-b7f8-f27091a1029f.png)
 ![image](https://user-images.githubusercontent.com/104368430/203928892-1c3a5eaf-1076-41d5-9fab-ffbe4366a119.png)
-Понадобилось 4 эпохи для обучкеия, те начиная с 5ой эпохи он корректно выполняет вычисления
 
+ 2) AND - понадобилось 5 эпох для обучкеия, начиная с 6ой эпохи он корректно выполняет вычисления
+![image](https://user-images.githubusercontent.com/104368430/203930371-f328d6a4-4764-41e2-9a9b-4b60b9b13bd1.png)
+![image](https://user-images.githubusercontent.com/104368430/203930474-b3ddac6b-64a7-4a07-b321-c02bd4ad4ec8.png)
+![image](https://user-images.githubusercontent.com/104368430/203930508-616aed56-8bfd-4d6e-81b3-1214a9a86fdb.png)
+![image](https://user-images.githubusercontent.com/104368430/203930551-d4c2ca3b-9136-4b2a-9c58-dbf63b26a976.png)
+![image](https://user-images.githubusercontent.com/104368430/203930582-0b6dc10e-42de-4f4f-8197-8b279be182b8.png)
 
- 2) AND
-
- 3) NAND
+ 3) NAND - понадобилось 6 эпох для обучкеия, начиная с 7ой эпохи он корректно выполняет вычисления
+![image](https://user-images.githubusercontent.com/104368430/203930915-10d2697f-fbd7-4a27-abe0-4bbd63313d4c.png)
+![image](https://user-images.githubusercontent.com/104368430/203930953-6b274b14-e6ee-4a6c-b7a8-db19420217a9.png)
+![image](https://user-images.githubusercontent.com/104368430/203930971-7552f463-de3f-4218-83c9-98abaf8c8211.png)
+![image](https://user-images.githubusercontent.com/104368430/203930999-83b4c92e-f6bf-4663-9acb-bbb984532d70.png)
+![image](https://user-images.githubusercontent.com/104368430/203931021-55ddcb72-8bc8-412c-baa8-b2e7d05478ee.png)
 
  4) XOP
+
 
 - Далее запускаем Anaconda Prompt для возможности запуска команд через консоль.
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/104368430/197691208-f0e13ff6-2340-4323-ad7f-0dccee2252f6.png">
